@@ -18,7 +18,7 @@ public class HtmlUnit {
 	Logger.getLogger("").setLevel(Level.OFF);
 	String[] urls = { "http://alex.academy/exe/payment_tax/index.html",
 		"http://alex.academy/exe/payment_tax/index2.html", "http://alex.academy/exe/payment_tax/index3.html",
-		"http://alex.academy/exe/payment_tax/index4.html", "http://alex.academy/exe/payment_tax/index4.html",
+		"http://alex.academy/exe/payment_tax/index4.html",
 		"http://alex.academy/exe/payment_tax/indexE.html" };
 
 	WebDriver driver = new HtmlUnitDriver();
@@ -31,8 +31,8 @@ public class HtmlUnit {
 	String string_monthly_payment_and_tax = driver.findElement(By.id("id_monthly_payment_and_tax")).getText();
 
 	String regex = "^" +
-	"(?:\\w[A-za-z]{6}\\:\\s)?(?:\\$)?(\\d{2}\\.\\d{2})"
-		+ "(?:\\,*\\/*\\s*)(?:\\w[A-za-z]{2}\\:\\s)?(?:(\\d{1}\\.\\d{2})\\%*)"
+	"(?:[A-Za-z]{7}\\:\\s)?(?:\\$)?(\\d{2}\\.\\d{2})"
+		+ "(?:\\,*\\/*\\s*)(?:[A-Za-z]{3}\\:\\s)?(?:(\\d{1}\\.\\d{2})\\%*)"
 		+ "$";
 	Pattern p = Pattern.compile(regex, Pattern.MULTILINE);
 	Matcher m = p.matcher(string_monthly_payment_and_tax);
